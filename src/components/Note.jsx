@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Note.css";
+import FlipCard from "./FlipCard";
 const Note = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
@@ -21,37 +22,39 @@ const Note = () => {
 
   return (
     <div className="app-container">
-      <form className="note-form" onSubmit={handleAddNote}>
+   {!true &&   <form className="note-form" onSubmit={handleAddNote}>
         <input
-          placeholder="Title"
+          placeholder="Question"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
         <textarea
-          placeholder="Content"
+          placeholder="Answer"
           rows={10}
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
         />
-        <button type="submit">Add Note</button>
+        <button type="submit">Add Question</button>
       </form>
-
+}
       <div className="notes-grid">
         {notes.map((note, index) => (
-          <div
-            className="note-item"
-            key={index}
-          >
-            <div className="notes-header">
-              <button onClick={() => handleDeleteNote(index)}>x</button>
-            </div>
-            <div className="note-content">
-              <h2>{note.title}</h2>
-              <p>{note.content}</p>
-            </div>
-          </div>
+          // <div
+          //   className="note-item"
+          //   key={index}
+          // >
+          //   <div className="notes-header">
+          //     <button onClick={() => handleDeleteNote(index)}>x</button>
+          //   </div>
+          //   <div className="note-content">
+          //     <h2>{note.title}</h2>
+          //     <p>{note.content}</p>
+          //   </div>
+          // </div>
+
+          <FlipCard question={note.title} answer ={note.content} />
         ))}
       </div>
     </div>
